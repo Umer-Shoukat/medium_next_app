@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { MediumContext } from "../context/MediumContext";
 import Modal from "react-modal";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import PostModal from "./PostModal";
 
 Modal.setAppElement("#__next");
 
@@ -47,7 +49,9 @@ const Header = () => {
             <div className={styles.bannerNav}>
               <div>Our Story</div>
               <div>Membership</div>
-              <div onClick={handleUserAuth}>Write</div>
+              <Link href={"/?addNew=1"}>
+                <div className={styles.accentedButton}>Write</div>
+              </Link>
               <div className={styles.accentedButton}>Get Unlimited Access</div>
             </div>
           ) : (
@@ -60,10 +64,12 @@ const Header = () => {
           )}
         </div>
         <Modal
-          isOpen={true}
+          isOpen={Boolean(router.query.addNew)}
           onRequestClose={() => router.push("/")}
           style={customStyles}
-        ></Modal>
+        >
+          <PostModal />
+        </Modal>
       </div>
     </>
   );

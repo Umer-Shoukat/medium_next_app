@@ -40,7 +40,7 @@ const ArticleMain = ({ post, author }) => {
               <div className={styles.authorProfileImageContainer}>
                 <Image
                   className={styles.image}
-                  src={`https://res.cloudinary.com/demo/image/fetch/${author.data.imageurl}`}
+                  src={`https://res.cloudinary.com/demo/image/fetch/${author?.data?.imageurl}`}
                   height={100}
                   width={100}
                 />
@@ -86,7 +86,7 @@ const ArticleMain = ({ post, author }) => {
             <h1 className={styles.title}>{post?.data?.title}</h1>
             <h4 className={styles.subtitle}>
               <div>
-                {author.data.name},{" "}
+                {author.data?.name},{" "}
                 {new Date(post?.data?.postedOn).toLocaleString("en-US", {
                   day: "numeric",
                   month: "short",
